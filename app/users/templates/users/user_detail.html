@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+{{object}} -
+{% endblock head_title %}
+
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="display-4 px-5">{{object}}</h1>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                
+                {% for address in object.customer_addresses.all %}
+                    {{address.address|default:""}}
+                {% empty %}
+                <p class="text-center">no addresses</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}
+    
